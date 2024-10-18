@@ -1,0 +1,84 @@
+<resources>
+
+    <!-- Pregunta 1 -->
+    <string name="question_1">¿Quién pintó la Capilla Sixtina?</string>
+    <string name="question_1_option_1">Miguel Ángel</string>
+    <string name="question_1_option_2">Leonardo Da Vinci</string>
+    <string name="question_1_option_3">Rafael</string>
+    <string name="question_1_option_4">Donatello</string>
+
+    <!-- Pregunta 2 -->
+    <string name="question_2">¿Quién escribió "La Odisea" ?</string>
+    <string name="question_2_option_1">Homero</string>
+    <string name="question_2_option_2">Sófocles</string>
+    <string name="question_2_option_3">Virgilio</string>
+    <string name="question_2_option_4">Aristóteles</string>
+
+    <!-- Pregunta 3 -->
+    <string name="question_3">¿En qué ciudad se encuentra el Museo del Louvre?</string>
+    <string name="question_3_option_1">Londres</string>
+    <string name="question_3_option_2">París</string>
+    <string name="question_3_option_3">Roma</string>
+    <string name="question_3_option_4">Madrid</string>
+
+    <!-- Pregunta 4 -->
+    <string name="question_4">¿Quién escribió "Cien años de soledad"?</string>
+    <string name="question_4_option_1">Gabriel García Márquez</string>
+    <string name="question_4_option_2">Mario Vargas Llosa</string>
+    <string name="question_4_option_3">Julio Cortázar</string>
+    <string name="question_4_option_4">Jorge Luis Borges</string>
+
+    <!-- Pregunta 5 -->
+    <string name="question_5">¿Qué técnica de pintura utiliza pigmentos mezclados con agua y se aplica sobre yeso húmedo?</string>
+    <string name="question_5_option_1">Fresco</string>
+    <string name="question_5_option_2">Óleo</string>
+    <string name="question_5_option_3">Acuarela</string>
+    <string name="question_5_option_4">Tempera</string>
+
+    <!-- Pregunta 6 -->
+    <string name="question_6">¿Quién es el autor de "La Divina Comedia"?</string>
+    <string name="question_6_option_1">Dante Alighieri</string>
+    <string name="question_6_option_2">Geoffrey Chaucer</string>
+    <string name="question_6_option_3">Francesco Petrarca</string>
+    <string name="question_6_option_4">Boccaccio</string>
+
+    <!-- Pregunta 7 -->
+    <string name="question_7">¿Qué movimiento artístico fue liderado por Pablo Picasso y Georges Braque?</string>
+    <string name="question_7_option_1">Cubismo</string>
+    <string name="question_7_option_2">Impresionismo</string>
+    <string name="question_7_option_3">Surrealismo</string>
+    <string name="question_7_option_4">Expresionismo</string>
+
+    <!-- Pregunta 8 -->
+    <string name="question_8">¿En qué año se publicó "Don Quijote de la Mancha"?</string>
+    <string name="question_8_option_1">1605</string>
+    <string name="question_8_option_2">1620</string>
+    <string name="question_8_option_3">1580</string>
+    <string name="question_8_option_4">1615</string>
+
+    <!-- Pregunta 9 -->
+    <string name="question_9">¿Qué escritor creó al personaje Sherlock Holmes?</string>
+    <string name="question_9_option_1">Arthur Conan Doyle</string>
+    <string name="question_9_option_2">Agatha Christie</string>
+    <string name="question_9_option_3">Edgar Allan Poe</string>
+    <string name="question_9_option_4">Jules Verne</string>
+
+    <!-- Pregunta 10 -->
+    <string name="question_10">¿Cuál es el cuadro más famoso de Vincent van Gogh?</string>
+    <string name="question_10_option_1">La noche estrellada</string>
+    <string name="question_10_option_2">Los girasoles</string>
+    <string name="question_10_option_3">El grito</string>
+    <string name="question_10_option_4">Guernica</string>
+
+    <!-- Títulos y mensajes generales -->
+    <string name="app_name">Juego de Trivia</string>
+    <string name="welcome_message">¡Bienvenido al juego de trivia! Responde correctamente las preguntas y obtén la mejor puntuación.</string>
+    <string name="start_game">Comenzar el juego</string>
+    <string name="next_button">Siguiente</string>
+    <string name="restart_button">Reiniciar</string>
+    <string name="correct_text">¡Correcto!</string>
+    <string name="incorrect_text">Incorrecto</string>
+    <string name="score_text">Puntuación final: %1$d</string>
+    <string name="game_description">¡Bienvenido al juego de preguntas y respuestas! Responde todas las preguntas sobre arte y literatura a continuación.</string>
+
+</resources>
