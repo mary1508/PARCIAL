@@ -1,52 +1,81 @@
 package com.example.parcial
 
+
+import android.os.Bundle
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import android.widget.Button
+import android.widget.RadioButton
+import android.widget.RadioGroup
+import android.widget.TextView
+import androidx.fragment.app.Fragment
+
 class QuestionFragment : Fragment() {
-    private lateinit var questions: List<Question>
+
+    private lateinit var questionTextView: TextView
+    private lateinit var radioGroup: RadioGroup
+    private lateinit var option1: RadioButton
+    private lateinit var option2: RadioButton
+    private lateinit var option3: RadioButton
+    private lateinit var option4: RadioButton
+    private lateinit var nextButton: Button
     private var currentQuestionIndex = 0
-    private lateinit var progressBar: ProgressBar
+
+    private val questions = listOf(
+        R.string.question_1 to listOf(R.string.question_1_option_1, R.string.question_1_option_2, R.string.question_1_option_3, R.string.question_1_option_4),
+        R.string.question_2 to listOf(R.string.question_2_option_1, R.string.question_2_option_2, R.string.question_2_option_3, R.string.question_2_option_4),
+        // Añadir más preguntas aquí
+    )
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val view = inflater.inflate(R.layout.fragment_question, container, false)
-        questions = loadQuestions(requireContext())
-        progressBar = view.findViewById(R.id.progressBar)
-
-        showQuestion(view)
-        return view
+        // Inflar el layout de fragment_question
+        return inflater.inflate(R.layout.fragment_question, container, false)
     }
 
-    private fun showQuestion(view: View) {
-        val questionTextView: TextView = view.findViewById(R.id.textViewQuestion)
-        val radioGroup: RadioGroup = view.findViewById(R.id.radioGroupOptions)
-        val btnSubmit: Button = view.findViewById(R.id.btnSubmit)
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
 
-        // Configurar la pregunta actual
-        val currentQuestion = questions[currentQuestionIndex]
-        questionTextView.text = currentQuestion.question
+        // Inicializar vistas
+        questionTextView = view.findViewById(R.id.questionTextView)
+        radioGroup = view.findViewById(R.id.radioGroup)
+        option1 = view.findViewById(R.id.option1)
+        option2 = view.findViewById(R.id.option2)
+        option3 = view.findViewById(R.id.option3)
+        option4 = view.findViewById(R.id.option4)
+        nextButton = view.findViewById(R.id.nextButton)
 
-        // Limpiar las opciones anteriores
-        radioGroup.removeAllViews()
-        currentQuestion.options.forEach { option ->
-            val radioButton = RadioButton(requireContext()).apply {
-                text = option
+        // Mostrar la primera pregunta
+        showQuestion()
+
+        // Al hacer clic en el botón siguiente, avanzar a la siguiente pregunta
+        nextButton.setOnClickListener {
+            currentQuestionIndex++
+            if (currentQuestionIndex < questions.size) {
+                showQuestion()
+            } else {
+                // Aquí podrías navegar al fragmento de resultados
             }
-            radioGroup.addView(radioButton)
         }
+    }
 
-        btnSubmit.setOnClickListener {
-            val selectedOptionIndex = radioGroup.indexOfChild(radioGroup.findViewById(radioGroup.checkedRadioButtonId))
-            val isCorrect = selectedOptionIndex == currentQuestion.correctAnswerIndex
+    private fun showQuestion() {
+        // Obtener el recurso de la pregunta actual
+        val (questionResId, optionsResIds) = questions[currentQuestionIndex]
 
-            // Navegar al Fragmento de Respuesta
-            parentFragmentManager.beginTransaction()
-                .replace(R.id.fragmentContainer, AnswerFragment.newInstance(isCorrect, currentQuestionIndex))
-                .addToBackStack(null)
-                .commit()
+        // Mostrar la pregunta
+        questionTextView.text = getString(questionResId)
 
-            // Actualizar la barra de progreso
-            progressBar.progress = ((currentQuestionIndex + 1) * 100) / questions.size
-        }
+        // Mostrar las opciones
+        option1.text = getString(optionsResIds[0])
+        option2.text = getString(optionsResIds[1])
+        option3.text = getString(optionsResIds[2])
+        option4.text = getString(optionsResIds[3])
+
+        // Limpiar la selección de respuestas anteriores
+        radioGroup.clearCheck()
     }
 }

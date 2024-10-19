@@ -13,11 +13,18 @@ class AnswerFragment : Fragment() {
 
         val view = inflater.inflate(R.layout.fragment_answer, container, false)
         val textViewFeedback: TextView = view.findViewById(R.id.textViewFeedback)
+        val textViewExplanation: TextView = view.findViewById(R.id.textViewExplanation)
+
+        // Mostrar la retroalimentación sobre la respuesta
         textViewFeedback.text = if (isCorrect) {
-            "¡Correcto!"
+            getString(R.string.correct_text)
         } else {
-            "Incorrecto. La respuesta correcta era: ${loadQuestions(requireContext())[questionIndex].options[loadQuestions(requireContext())[questionIndex].correctAnswerIndex]}"
+            getString(R.string.incorrect_text)
         }
+
+        // Obtener la explicación de la respuesta
+        val explanation = getExplanationForQuestion(requireContext(), questionIndex)
+        textViewExplanation.text = explanation
 
         val btnNext: Button = view.findViewById(R.id.btnNext)
         btnNext.setOnClickListener {
@@ -39,6 +46,15 @@ class AnswerFragment : Fragment() {
         return view
     }
 
+    private fun getExplanationForQuestion(context: Context, index: Int): String {
+        return when (index) {
+            0 -> context.getString(R.string.question_1_explanation)
+            1 -> context.getString(R.string.question_2_explanation)
+            // Agregar las demás explicaciones aquí
+            else -> "No hay explicación disponible."
+        }
+    }
+
     companion object {
         private const val ARG_IS_CORRECT = "isCorrect"
         private const val ARG_QUESTION_INDEX = "questionIndex"
@@ -47,7 +63,6 @@ class AnswerFragment : Fragment() {
             arguments = Bundle().apply {
                 putBoolean(ARG_IS_CORRECT, isCorrect)
                 putInt(ARG_QUESTION_INDEX, questionIndex)
-
             }
         }
     }
