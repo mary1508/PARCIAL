@@ -47,6 +47,7 @@ class AnswerFragment : Fragment() {
             arguments = Bundle().apply {
                 putBoolean(ARG_IS_CORRECT, isCorrect)
                 putInt(ARG_QUESTION_INDEX, questionIndex)
+
             }
         }
     }
