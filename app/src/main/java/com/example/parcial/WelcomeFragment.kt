@@ -15,7 +15,6 @@ class WelcomeFragment : Fragment() {
                 .addToBackStack(null)
                 .commit()
         }
-
         return view
     }
 }
