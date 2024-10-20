@@ -2,88 +2,85 @@
 
     <!-- Pregunta 1 -->
     <string name="question_1">¿Quién pintó la Capilla Sixtina?</string>
-    <string name="question_1_option_1">Miguel Ángel</string>
-    <string name="question_1_option_2">Leonardo Da Vinci</string>
+    <string name="question_1_option_1">Donatello</string>
+    <string name="question_1_option_2">Miguel Ángel</string>
     <string name="question_1_option_3">Rafael</string>
-    <string name="question_1_option_4">Donatello</string>
+    <string name="question_1_option_4">Leonardo Da Vinci</string>
 
     <!-- Pregunta 2 -->
-    <string name="question_2">¿Quién escribió "La Odisea" ?</string>
-    <string name="question_2_option_1">Homero</string>
-    <string name="question_2_option_2">Sófocles</string>
-    <string name="question_2_option_3">Virgilio</string>
-    <string name="question_2_option_4">Aristóteles</string>
+    <string name="question_2">¿Quién escribió "La Odisea"?</string>
+    <string name="question_2_option_1">Sófocles</string>
+    <string name="question_2_option_2">Homero</string>
+    <string name="question_2_option_3">Aristóteles</string>
+    <string name="question_2_option_4">Virgilio</string>
 
     <!-- Pregunta 3 -->
     <string name="question_3">¿En qué ciudad se encuentra el Museo del Louvre?</string>
     <string name="question_3_option_1">Londres</string>
-    <string name="question_3_option_2">París</string>
+    <string name="question_3_option_2">Madrid</string>
     <string name="question_3_option_3">Roma</string>
-    <string name="question_3_option_4">Madrid</string>
+    <string name="question_3_option_4">París</string>
 
     <!-- Pregunta 4 -->
     <string name="question_4">¿Quién escribió "Cien años de soledad"?</string>
-    <string name="question_4_option_1">Gabriel García Márquez</string>
-    <string name="question_4_option_2">Mario Vargas Llosa</string>
-    <string name="question_4_option_3">Julio Cortázar</string>
-    <string name="question_4_option_4">Jorge Luis Borges</string>
+    <string name="question_4_option_1">Mario Vargas Llosa</string>
+    <string name="question_4_option_2">Gabriel García Márquez</string>
+    <string name="question_4_option_3">Jorge Luis Borges</string>
+    <string name="question_4_option_4">Julio Cortázar</string>
 
     <!-- Pregunta 5 -->
     <string name="question_5">¿Qué técnica de pintura utiliza pigmentos mezclados con agua y se aplica sobre yeso húmedo?</string>
-    <string name="question_5_option_1">Fresco</string>
-    <string name="question_5_option_2">Óleo</string>
-    <string name="question_5_option_3">Acuarela</string>
+    <string name="question_5_option_1">Acuarela</string>
+    <string name="question_5_option_2">Fresco</string>
+    <string name="question_5_option_3">Óleo</string>
     <string name="question_5_option_4">Tempera</string>
 
     <!-- Pregunta 6 -->
     <string name="question_6">¿Quién es el autor de "La Divina Comedia"?</string>
-    <string name="question_6_option_1">Dante Alighieri</string>
-    <string name="question_6_option_2">Geoffrey Chaucer</string>
-    <string name="question_6_option_3">Francesco Petrarca</string>
-    <string name="question_6_option_4">Boccaccio</string>
+    <string name="question_6_option_1">Geoffrey Chaucer</string>
+    <string name="question_6_option_2">Boccaccio</string>
+    <string name="question_6_option_3">Dante Alighieri</string>
+    <string name="question_6_option_4">Francesco Petrarca</string>
 
     <!-- Pregunta 7 -->
     <string name="question_7">¿Qué movimiento artístico fue liderado por Pablo Picasso y Georges Braque?</string>
-    <string name="question_7_option_1">Cubismo</string>
-    <string name="question_7_option_2">Impresionismo</string>
-    <string name="question_7_option_3">Surrealismo</string>
+    <string name="question_7_option_1">Surrealismo</string>
+    <string name="question_7_option_2">Cubismo</string>
+    <string name="question_7_option_3">Impresionismo</string>
     <string name="question_7_option_4">Expresionismo</string>
 
     <!-- Pregunta 8 -->
     <string name="question_8">¿En qué año se publicó "Don Quijote de la Mancha"?</string>
-    <string name="question_8_option_1">1605</string>
-    <string name="question_8_option_2">1620</string>
-    <string name="question_8_option_3">1580</string>
-    <string name="question_8_option_4">1615</string>
+    <string name="question_8_option_1">1620</string>
+    <string name="question_8_option_2">1605</string>
+    <string name="question_8_option_3">1615</string>
+    <string name="question_8_option_4">1580</string>
 
     <!-- Pregunta 9 -->
     <string name="question_9">¿Qué escritor creó al personaje Sherlock Holmes?</string>
-    <string name="question_9_option_1">Arthur Conan Doyle</string>
-    <string name="question_9_option_2">Agatha Christie</string>
-    <string name="question_9_option_3">Edgar Allan Poe</string>
+    <string name="question_9_option_1">Agatha Christie</string>
+    <string name="question_9_option_2">Edgar Allan Poe</string>
+    <string name="question_9_option_3">Arthur Conan Doyle</string>
     <string name="question_9_option_4">Jules Verne</string>
 
     <!-- Pregunta 10 -->
     <string name="question_10">¿Cuál es el cuadro más famoso de Vincent van Gogh?</string>
-    <string name="question_10_option_1">La noche estrellada</string>
-    <string name="question_10_option_2">Los girasoles</string>
-    <string name="question_10_option_3">El grito</string>
-    <string name="question_10_option_4">Guernica</string>
+    <string name="question_10_option_1">Los girasoles</string>
+    <string name="question_10_option_2">El grito</string>
+    <string name="question_10_option_3">Guernica</string>
+    <string name="question_10_option_4">La noche estrellada</string>
 
-    <resources>
-        <string name="explanation_question_1">Miguel Ángel pintó el techo de la Capilla Sixtina entre 1508 y 1512, bajo el patrocinio del Papa Julio II.</string>
-        <string name="explanation_question_2">La "Odisea" es una de las dos grandes epopeyas griegas atribuidas a Homero. Narra las aventuras de Odiseo (Ulises) en su largo viaje de regreso a Ítaca después de la guerra de Troya.</string>
-        <string name="explanation_question_3">El Museo del Louvre se encuentra en París, Francia. Es uno de los museos más importantes del mundo y alberga obras icónicas como la Mona Lisa y la Venus de Milo.</string>
-        <string name="explanation_question_4">Gabriel García Márquez, autor colombiano, escribió "Cien años de soledad", considerada una de las grandes obras de la literatura universal. La novela es un pilar del realismo mágico y sigue la historia de la familia Buendía.</string>
-        <string name="explanation_question_5"> El fresco es una técnica en la que se aplican pigmentos disueltos en agua sobre una capa de yeso húmedo. Al secarse, los colores se integran en la pared, creando una obra muy duradera. Ejemplo famoso: los frescos de la Capilla Sixtina.</string>
-        <string name="explanation_question_6">Fue escrita por el poeta italiano Dante Alighieri. Es una obra épica en la que el protagonista viaja por el Infierno, el Purgatorio y el Paraíso, guiado por Virgilio y Beatriz.</string>
-        <string name="explanation_question_7">El cubismo fue un movimiento artístico iniciado por Pablo Picasso y Georges Braque a principios del siglo XX. Se caracteriza por la representación de los objetos descompuestos en formas geométricas y la utilización de múltiples puntos de vista en una misma imagen.</string>
-        <string name="explanation_question_8">La primera parte de "Don Quijote de la Mancha" fue publicada en 1605, escrita por Miguel de Cervantes. Es considerada una de las obras más importantes de la literatura mundial y es la primera novela moderna.</string>
-        <string name="explanation_question_9">Arthur Conan Doyle, escritor británico, creó el personaje de Sherlock Holmes, el famoso detective que utiliza el razonamiento deductivo para resolver casos. La primera historia de Holmes, "Estudio en escarlata", fue publicada en 1887.</string>
-        <string name="explanation_question_10">"La noche estrellada" es quizás la obra más famosa de Vincent van Gogh. Pintada en 1889, representa un paisaje nocturno con un cielo lleno de remolinos y estrellas brillantes, que captura el estilo postimpresionista y emocional del pintor.</string>
-        <!-- Añadir más explicaciones aquí -->
-    </resources>
-
+    <!-- Explicaciones -->
+    <string name="explanation_question_1">Miguel Ángel pintó el techo de la Capilla Sixtina entre 1508 y 1512, bajo el patrocinio del Papa Julio II.</string>
+    <string name="explanation_question_2">La "Odisea" es una de las dos grandes epopeyas griegas atribuidas a Homero. Narra las aventuras de Odiseo (Ulises) en su largo viaje de regreso a Ítaca después de la guerra de Troya.</string>
+    <string name="explanation_question_3">El Museo del Louvre se encuentra en París, Francia. Es uno de los museos más importantes del mundo y alberga obras icónicas como la Mona Lisa y la Venus de Milo.</string>
+    <string name="explanation_question_4">Gabriel García Márquez, autor colombiano, escribió "Cien años de soledad", considerada una de las grandes obras de la literatura universal. La novela es un pilar del realismo mágico y sigue la historia de la familia Buendía.</string>
+    <string name="explanation_question_5">El fresco es una técnica en la que se aplican pigmentos disueltos en agua sobre una capa de yeso húmedo. Al secarse, los colores se integran en la pared, creando una obra muy duradera. Ejemplo famoso: los frescos de la Capilla Sixtina.</string>
+    <string name="explanation_question_6">Fue escrita por el poeta italiano Dante Alighieri. Es una obra épica en la que el protagonista viaja por el Infierno, el Purgatorio y el Paraíso, guiado por Virgilio y Beatriz.</string>
+    <string name="explanation_question_7">El cubismo fue un movimiento artístico iniciado por Pablo Picasso y Georges Braque a principios del siglo XX. Se caracteriza por la representación de los objetos descompuestos en formas geométricas y la utilización de múltiples puntos de vista en una misma imagen.</string>
+    <string name="explanation_question_8">La primera parte de "Don Quijote de la Mancha" fue publicada en 1605, escrita por Miguel de Cervantes. Es considerada una de las obras más importantes de la literatura mundial y es la primera novela moderna.</string>
+    <string name="explanation_question_9">Arthur Conan Doyle, escritor británico, creó el personaje de Sherlock Holmes, el famoso detective que utiliza el razonamiento deductivo para resolver casos. La primera historia de Holmes, "Estudio en escarlata", fue publicada en 1887.</string>
+    <string name="explanation_question_10">"La noche estrellada" es quizás la obra más famosa de Vincent van Gogh. Pintada en 1889, representa un paisaje nocturno con un cielo lleno de remolinos y estrellas brillantes, que captura el estilo postimpresionista y emocional del pintor.</string>
 
     <!-- Títulos y mensajes generales -->
     <string name="app_name">Juego de Trivia</string>
@@ -95,5 +92,5 @@
     <string name="incorrect_text">Incorrecto</string>
     <string name="score_text">Puntuación final: %1$d</string>
     <string name="game_description">¡Bienvenido al juego de preguntas y respuestas! Responde todas las preguntas sobre arte y literatura a continuación.</string>
-
+    <string name="retry_game">Reiniciar el juego</string>
 </resources>

@@ -1,5 +1,14 @@
 package com.example.parcial
 
+import android.os.Bundle
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import android.widget.Button
+import android.widget.TextView
+import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
+
 class ResultFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -7,17 +16,17 @@ class ResultFragment : Fragment() {
     ): View? {
         val view = inflater.inflate(R.layout.fragment_result, container, false)
 
-        // Aquí puedes calcular la puntuación total y mostrarla
-        val textViewResult: TextView = view.findViewById(R.id.textViewResult)
-        textViewResult.text = "Tu puntuación total es: ..."
+        // Obtener los argumentos pasados
+        arguments?.let { args ->
+            val score = args.getInt("score", 0) // Obtén la puntuación
 
-        val btnRetry: Button = view.findViewById(R.id.btnRetry)
-        btnRetry.setOnClickListener {
-            // Reiniciar el juego volviendo al WelcomeFragment
-            parentFragmentManager.popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE)
-            parentFragmentManager.beginTransaction()
-                .replace(R.id.fragmentContainer, WelcomeFragment())
-                .commit()
+            // Muestra la puntuación total usando la cadena de strings.xml
+            val textViewResult: TextView = view.findViewById(R.id.textViewResult)
+            textViewResult.text = getString(R.string.score_text, score) // Usa la cadena con el marcador
+        }
+
+        view.findViewById<Button>(R.id.btnRetry).setOnClickListener {
+            findNavController().navigate(R.id.action_resultFragment_to_welcomeFragment)
         }
 
         return view

@@ -1,6 +1,7 @@
 package com.example.parcial
 
 import android.os.Bundle
+import android.os.CountDownTimer
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,13 +10,14 @@ import android.widget.RadioButton
 import android.widget.RadioGroup
 import android.widget.TextView
 import androidx.fragment.app.Fragment
-import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.fragment.findNavController
 
 class QuestionFragment : Fragment() {
 
-    private var questionIndex: Int = 0
-    private var correctAnswerIndex: Int = 0
-
+    private var currentQuestionIndex: Int = 0
+    private var score: Int = 0
+    private var isFirstQuestion: Boolean = true
+    private var timer: CountDownTimer? = null
     private val questions = listOf(
         R.string.question_1,
         R.string.question_2,
@@ -42,41 +44,45 @@ class QuestionFragment : Fragment() {
         listOf(R.string.question_10_option_1, R.string.question_10_option_2, R.string.question_10_option_3, R.string.question_10_option_4)
     )
 
-    private val correctAnswers = listOf(0, 0, 1, 0, 0, 0, 0, 0, 0, 0) // Índices correctos
+    // Aquí van los índices de respuesta correcta, ajusta según el orden de las respuestas
+    private val correctAnswers = listOf(1, 1, 3, 1, 1, 3, 1, 1, 2, 1) // Cambia a 0-indexed
+
+    private val explanations = listOf(
+        R.string.explanation_question_1,
+        R.string.explanation_question_2,
+        R.string.explanation_question_3,
+        R.string.explanation_question_4,
+        R.string.explanation_question_5,
+        R.string.explanation_question_6,
+        R.string.explanation_question_7,
+        R.string.explanation_question_8,
+        R.string.explanation_question_9,
+        R.string.explanation_question_10
+    )
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val view = inflater.inflate(R.layout.fragment_question, container, false)
+        return inflater.inflate(R.layout.fragment_question, container, false)
+    }
 
-        // Cargar primera pregunta
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
         loadQuestion(view)
 
         val nextButton = view.findViewById<Button>(R.id.nextButton)
         nextButton.setOnClickListener {
-            if (checkAnswer(view)) {
-                questionIndex++
-                if (questionIndex < questions.size) {
-                    loadQuestion(view)
-                } else {
-                    // Navegar al fragmento de resultados (implementación puede variar según tu app)
-                    NavHostFragment.findNavController(this)
-                        .navigate(R.id.action_questionFragment_to_resultFragment)
-                }
-            }
+            checkAnswer(view)
         }
-
-        return view
     }
 
     private fun loadQuestion(view: View) {
-        // Configura la pregunta
         val questionText = view.findViewById<TextView>(R.id.questionTextView)
-        questionText.text = getString(questions[questionIndex])
+        questionText.text = getString(questions[currentQuestionIndex])
 
-        // Configura las opciones de respuesta
-        val options = answers[questionIndex]
+        val options = answers[currentQuestionIndex]
         val radioGroup = view.findViewById<RadioGroup>(R.id.radioGroup)
         val option1 = view.findViewById<RadioButton>(R.id.option1)
         val option2 = view.findViewById<RadioButton>(R.id.option2)
@@ -88,13 +94,23 @@ class QuestionFragment : Fragment() {
         option3.text = getString(options[2])
         option4.text = getString(options[3])
 
-        radioGroup.clearCheck()
+        radioGroup.clearCheck() // Limpiar selecciones anteriores
+        val timerTextView = view.findViewById<TextView>(R.id.timerTextView)
 
-        // Actualiza el índice de la respuesta correcta
-        correctAnswerIndex = correctAnswers[questionIndex]
+        // Iniciar el temporizador solo cuando la pregunta esté cargada
+        timer?.cancel() // Cancelar cualquier temporizador anterior
+        timer = object : CountDownTimer(15000, 1000) {
+            override fun onTick(millisUntilFinished: Long) {
+                timerTextView.text = "Tiempo restante: ${millisUntilFinished / 1000}s"
+            }
+
+            override fun onFinish() {
+                navigateToAnswer(false) // Tiempo agotado, moverse a la respuesta como incorrecta
+            }
+        }.start()
     }
 
-    private fun checkAnswer(view: View): Boolean {
+    private fun checkAnswer(view: View) {
         val radioGroup = view.findViewById<RadioGroup>(R.id.radioGroup)
         val selectedOptionIndex = when (radioGroup.checkedRadioButtonId) {
             R.id.option1 -> 0
@@ -104,14 +120,55 @@ class QuestionFragment : Fragment() {
             else -> -1
         }
 
-        if (selectedOptionIndex == correctAnswerIndex) {
-            // Respuesta correcta
-            // Aquí podrías mostrar un mensaje o hacer algo
-            return true
-        } else {
-            // Respuesta incorrecta
-            // Aquí podrías mostrar un mensaje o hacer algo
-            return false
+        // Solo proceder si se seleccionó una opción
+        if (selectedOptionIndex != -1) {
+            val isCorrect = selectedOptionIndex == correctAnswers[currentQuestionIndex]
+            if (isCorrect) score++ // Incrementar la puntuación si es correcta
+
+            // Cancelar el temporizador ya que se seleccionó una respuesta
+            timer?.cancel()
+
+            navigateToAnswer(isCorrect)
         }
+    }
+
+    private fun navigateToAnswer(isCorrect: Boolean) {
+        val action = QuestionFragmentDirections.actionQuestionFragmentToAnswerFragment(
+            isCorrect = isCorrect,  // Nombre de parámetro correcto
+            explanationId = explanations[currentQuestionIndex],  // Nombre de parámetro correcto
+            questionId = questions[currentQuestionIndex]  // ID de la pregunta
+        )
+        findNavController().navigate(action)
+    }
+
+
+    private fun moveToNextQuestion() {
+        currentQuestionIndex++
+        if (currentQuestionIndex < questions.size) {
+            view?.let { loadQuestion(it) }
+        } else {
+            navigateToResult()
+        }
+    }
+
+    private fun navigateToResult() {
+        val action = QuestionFragmentDirections.actionQuestionFragmentToResultFragment(score, questions.size)
+        findNavController().navigate(action)
+    }
+
+
+    override fun onResume() {
+        super.onResume()
+        if (isFirstQuestion) {
+            isFirstQuestion = false
+            loadQuestion(requireView())
+        } else {
+            moveToNextQuestion()
+        }
+    }
+
+    override fun onPause() {
+        super.onPause()
+        timer?.cancel() // Cancelar el temporizador si el usuario sale del fragmento
     }
 }

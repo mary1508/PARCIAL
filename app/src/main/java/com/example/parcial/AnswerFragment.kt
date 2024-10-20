@@ -1,57 +1,65 @@
 package com.example.parcial
 
 import android.os.Bundle
+import android.os.CountDownTimer
+import android.os.Handler
+import android.os.Looper
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
 import android.widget.TextView
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 
 class AnswerFragment : Fragment() {
 
-    private lateinit var resultTextView: TextView
-    private lateinit var explanationTextView: TextView
-    private lateinit var nextButton: Button
-
-    private var isCorrectAnswer = false
-    private var explanationTextResId = 0
+    private val handler = Handler(Looper.getMainLooper())
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflar el layout de fragment_answer
         return inflater.inflate(R.layout.fragment_answer, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        // Inicializar las vistas
-        resultTextView = view.findViewById(R.id.resultTextView)
-        explanationTextView = view.findViewById(R.id.explanationTextView)
-        nextButton = view.findViewById(R.id.nextButton)
+        val resultTextView: TextView = view.findViewById(R.id.resultTextView)
+        val explanationTextView: TextView = view.findViewById(R.id.explanationTextView)
 
-        // Obtener los argumentos del bundle (para determinar si la respuesta fue correcta o no y la explicación)
-        arguments?.let {
-            isCorrectAnswer = it.getBoolean("isCorrectAnswer", false)
-            explanationTextResId = it.getInt("explanationTextResId", 0)
+        arguments?.let { args ->
+            // Cambia los nombres de los parámetros a los que definiste en el nav_graph
+            val isCorrectAnswer = args.getBoolean("isCorrect", false) // Cambiado
+            val explanationTextResId = args.getInt("explanationId", 0) // Cambiado
+
+            // Verifica si el valor de isCorrectAnswer es correcto
+            resultTextView.text = if (isCorrectAnswer) {
+                getString(R.string.correct_text)
+            } else {
+                getString(R.string.incorrect_text)
+            }
+
+            // Solo asigna la explicación si hay un recurso válido
+            if (explanationTextResId != 0) {
+                explanationTextView.text = getString(explanationTextResId)
+            }
         }
 
-        // Mostrar si la respuesta fue correcta o incorrecta
-        if (isCorrectAnswer) {
-            resultTextView.text = getString(R.string.correct_text)
-        } else {
-            resultTextView.text = getString(R.string.incorrect_text)
-        }
+        // Temporizador para regresar al fragmento anterior
+        object : CountDownTimer(5000, 1000) {
+            override fun onTick(millisUntilFinished: Long) {
+                // Puedes actualizar un TextView con el tiempo restante si quieres
+            }
 
-        // Mostrar la explicación de la respuesta
-        explanationTextView.text = getString(explanationTextResId)
+            override fun onFinish() {
+                findNavController().popBackStack()
+            }
+        }.start()
+    }
 
-        // Manejar el clic en el botón "Siguiente"
-        nextButton.setOnClickListener {
-            // Aquí puedes navegar a la siguiente pregunta o al fragmento de resultados
-        }
+    override fun onDestroyView() {
+        super.onDestroyView()
+        handler.removeCallbacksAndMessages(null) // Evitar fugas de memoria
     }
 }

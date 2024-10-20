@@ -3,22 +3,74 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/questionFragment">
+    app:startDestination="@id/welcomeFragment">
+
+    <fragment
+        android:id="@+id/welcomeFragment"
+        android:name="com.example.parcial.WelcomeFragment"
+        android:label="@string/app_name"
+        tools:layout="@layout/fragment_welcome">
+        <action
+            android:id="@+id/action_welcomeFragment_to_questionFragment"
+            app:destination="@id/questionFragment" />
+    </fragment>
 
     <fragment
         android:id="@+id/questionFragment"
-        android:name="com.example.app.QuestionFragment"
-        android:label="Question Fragment"
+        android:name="com.example.parcial.QuestionFragment"
+        android:label="@string/app_name"
         tools:layout="@layout/fragment_question">
         <action
-            android:id="@+id/action_questionFragment_to_resultFragment"
+            android:id="@+id/actionQuestionFragmentToAnswerFragment"
+            app:destination="@id/answerFragment">
+            <argument
+                android:name="isCorrect"
+                app:argType="boolean" />
+            <argument
+                android:name="explanationId"
+                app:argType="integer" />
+            <argument
+                android:name="questionId"
+                app:argType="integer" />
+        </action>
+
+        <action
+            android:id="@+id/actionQuestionFragmentToResultFragment"
+            app:destination="@id/resultFragment">
+            <argument
+                android:name="score"
+                app:argType="integer" />
+            <argument
+                android:name="totalQuestions"
+                app:argType="integer" />
+        </action>
+
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/answerFragment"
+        android:name="com.example.parcial.AnswerFragment"
+        android:label="@string/app_name"
+        tools:layout="@layout/fragment_answer">
+        <action
+            android:id="@+id/action_answerFragment_to_questionFragment"
+            app:destination="@id/questionFragment" />
+        <action
+            android:id="@+id/action_answerFragment_to_resultFragment"
             app:destination="@id/resultFragment" />
     </fragment>
 
     <fragment
         android:id="@+id/resultFragment"
-        android:name="com.example.app.ResultFragment"
-        android:label="Result Fragment"
-        tools:layout="@layout/fragment_result" />
+        android:name="com.example.parcial.ResultFragment"
+        android:label="@string/app_name"
+        tools:layout="@layout/fragment_result">
+        <action
+            android:id="@+id/action_resultFragment_to_welcomeFragment"
+            app:destination="@id/welcomeFragment"
+            app:popUpTo="@id/welcomeFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
 
 </navigation>
