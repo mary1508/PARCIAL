@@ -70,6 +70,21 @@
     <string name="question_10_option_3">El grito</string>
     <string name="question_10_option_4">Guernica</string>
 
+    <resources>
+        <string name="explanation_question_1">Miguel Ángel pintó el techo de la Capilla Sixtina entre 1508 y 1512, bajo el patrocinio del Papa Julio II.</string>
+        <string name="explanation_question_2">La "Odisea" es una de las dos grandes epopeyas griegas atribuidas a Homero. Narra las aventuras de Odiseo (Ulises) en su largo viaje de regreso a Ítaca después de la guerra de Troya.</string>
+        <string name="explanation_question_3">El Museo del Louvre se encuentra en París, Francia. Es uno de los museos más importantes del mundo y alberga obras icónicas como la Mona Lisa y la Venus de Milo.</string>
+        <string name="explanation_question_4">Gabriel García Márquez, autor colombiano, escribió "Cien años de soledad", considerada una de las grandes obras de la literatura universal. La novela es un pilar del realismo mágico y sigue la historia de la familia Buendía.</string>
+        <string name="explanation_question_5"> El fresco es una técnica en la que se aplican pigmentos disueltos en agua sobre una capa de yeso húmedo. Al secarse, los colores se integran en la pared, creando una obra muy duradera. Ejemplo famoso: los frescos de la Capilla Sixtina.</string>
+        <string name="explanation_question_6">Fue escrita por el poeta italiano Dante Alighieri. Es una obra épica en la que el protagonista viaja por el Infierno, el Purgatorio y el Paraíso, guiado por Virgilio y Beatriz.</string>
+        <string name="explanation_question_7">El cubismo fue un movimiento artístico iniciado por Pablo Picasso y Georges Braque a principios del siglo XX. Se caracteriza por la representación de los objetos descompuestos en formas geométricas y la utilización de múltiples puntos de vista en una misma imagen.</string>
+        <string name="explanation_question_8">La primera parte de "Don Quijote de la Mancha" fue publicada en 1605, escrita por Miguel de Cervantes. Es considerada una de las obras más importantes de la literatura mundial y es la primera novela moderna.</string>
+        <string name="explanation_question_9">Arthur Conan Doyle, escritor británico, creó el personaje de Sherlock Holmes, el famoso detective que utiliza el razonamiento deductivo para resolver casos. La primera historia de Holmes, "Estudio en escarlata", fue publicada en 1887.</string>
+        <string name="explanation_question_10">"La noche estrellada" es quizás la obra más famosa de Vincent van Gogh. Pintada en 1889, representa un paisaje nocturno con un cielo lleno de remolinos y estrellas brillantes, que captura el estilo postimpresionista y emocional del pintor.</string>
+        <!-- Añadir más explicaciones aquí -->
+    </resources>
+
+
     <!-- Títulos y mensajes generales -->
     <string name="app_name">Juego de Trivia</string>
     <string name="welcome_message">¡Bienvenido al juego de trivia! Responde correctamente las preguntas y obtén la mejor puntuación.</string>

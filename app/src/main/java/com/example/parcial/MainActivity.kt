@@ -3,23 +3,27 @@ package com.example.parcial
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
+import androidx.navigation.findNavController
+import androidx.navigation.ui.setupActionBarWithNavController
+
 
 class MainActivity : AppCompatActivity() {
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+    class MainActivity : AppCompatActivity() {
 
-        // Cargar el fragmento de bienvenida al inicio
-        if (savedInstanceState == null) {
-            loadFragment(WelcomeFragment())
+        override fun onCreate(savedInstanceState: Bundle?) {
+            super.onCreate(savedInstanceState)
+            setContentView(R.layout.activity_main)
+
+            val navController = findNavController(R.id.nav_host_fragment)
+            setupActionBarWithNavController(navController)
+        }
+
+        override fun onSupportNavigateUp(): Boolean {
+            val navController = findNavController(R.id.nav_host_fragment)
+            return navController.navigateUp() || super.onSupportNavigateUp()
         }
     }
-
-    private fun loadFragment(fragment: Fragment) {
-        val transaction = supportFragmentManager.beginTransaction()
-        transaction.replace(R.id.fragmentContainer, fragment)
-        transaction.commit()
-    }
 }
+
 

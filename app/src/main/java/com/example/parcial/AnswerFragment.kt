@@ -1,69 +1,57 @@
 package com.example.parcial
 
+import android.os.Bundle
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import android.widget.Button
+import android.widget.TextView
+import androidx.fragment.app.Fragment
+
 class AnswerFragment : Fragment() {
-    private var isCorrect: Boolean = false
-    private var questionIndex: Int = -1
+
+    private lateinit var resultTextView: TextView
+    private lateinit var explanationTextView: TextView
+    private lateinit var nextButton: Button
+
+    private var isCorrectAnswer = false
+    private var explanationTextResId = 0
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        isCorrect = arguments?.getBoolean(ARG_IS_CORRECT) ?: false
-        questionIndex = arguments?.getInt(ARG_QUESTION_INDEX) ?: -1
+        // Inflar el layout de fragment_answer
+        return inflater.inflate(R.layout.fragment_answer, container, false)
+    }
 
-        val view = inflater.inflate(R.layout.fragment_answer, container, false)
-        val textViewFeedback: TextView = view.findViewById(R.id.textViewFeedback)
-        val textViewExplanation: TextView = view.findViewById(R.id.textViewExplanation)
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
 
-        // Mostrar la retroalimentación sobre la respuesta
-        textViewFeedback.text = if (isCorrect) {
-            getString(R.string.correct_text)
+        // Inicializar las vistas
+        resultTextView = view.findViewById(R.id.resultTextView)
+        explanationTextView = view.findViewById(R.id.explanationTextView)
+        nextButton = view.findViewById(R.id.nextButton)
+
+        // Obtener los argumentos del bundle (para determinar si la respuesta fue correcta o no y la explicación)
+        arguments?.let {
+            isCorrectAnswer = it.getBoolean("isCorrectAnswer", false)
+            explanationTextResId = it.getInt("explanationTextResId", 0)
+        }
+
+        // Mostrar si la respuesta fue correcta o incorrecta
+        if (isCorrectAnswer) {
+            resultTextView.text = getString(R.string.correct_text)
         } else {
-            getString(R.string.incorrect_text)
+            resultTextView.text = getString(R.string.incorrect_text)
         }
 
-        // Obtener la explicación de la respuesta
-        val explanation = getExplanationForQuestion(requireContext(), questionIndex)
-        textViewExplanation.text = explanation
+        // Mostrar la explicación de la respuesta
+        explanationTextView.text = getString(explanationTextResId)
 
-        val btnNext: Button = view.findViewById(R.id.btnNext)
-        btnNext.setOnClickListener {
-            if (questionIndex < loadQuestions(requireContext()).size - 1) {
-                // Navegar al siguiente fragmento de preguntas
-                parentFragmentManager.beginTransaction()
-                    .replace(R.id.fragmentContainer, QuestionFragment())
-                    .addToBackStack(null)
-                    .commit()
-            } else {
-                // Si es la última pregunta, ir al ResultFragment
-                parentFragmentManager.beginTransaction()
-                    .replace(R.id.fragmentContainer, ResultFragment())
-                    .addToBackStack(null)
-                    .commit()
-            }
-        }
-
-        return view
-    }
-
-    private fun getExplanationForQuestion(context: Context, index: Int): String {
-        return when (index) {
-            0 -> context.getString(R.string.question_1_explanation)
-            1 -> context.getString(R.string.question_2_explanation)
-            // Agregar las demás explicaciones aquí
-            else -> "No hay explicación disponible."
-        }
-    }
-
-    companion object {
-        private const val ARG_IS_CORRECT = "isCorrect"
-        private const val ARG_QUESTION_INDEX = "questionIndex"
-
-        fun newInstance(isCorrect: Boolean, questionIndex: Int) = AnswerFragment().apply {
-            arguments = Bundle().apply {
-                putBoolean(ARG_IS_CORRECT, isCorrect)
-                putInt(ARG_QUESTION_INDEX, questionIndex)
-            }
+        // Manejar el clic en el botón "Siguiente"
+        nextButton.setOnClickListener {
+            // Aquí puedes navegar a la siguiente pregunta o al fragmento de resultados
         }
     }
 }
